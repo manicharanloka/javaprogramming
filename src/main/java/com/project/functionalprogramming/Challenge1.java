@@ -145,6 +145,7 @@ public class Challenge1 {
                 .collect(Collectors.counting());
         float avgSalaryOfDevelopers = developerSalaries/numOfDevelopers;
         System.out.println(avgSalaryOfDevelopers);
+        //Composition
         Function<Employee, String> getName = emp->emp.getName();
         Function<String, String> reverse = x->new StringBuilder(x).reverse().toString();
         Function<String, String> upperCase = x->x.toUpperCase();

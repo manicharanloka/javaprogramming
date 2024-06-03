@@ -42,8 +42,10 @@ public class AdvancedFunctions {
         Function<Integer, Function<Integer, Integer>> addFive = addOnePartial.apply(5);
         Function<Integer, Integer> addFiveAndSix = addFive.apply(6);
         System.out.println(addFiveAndSix.apply(7));
+        //Recursion
         countDown(10);
         countUp(0,10);
+        //Composition
         Function<Integer, Integer> timesTwo = x->x*2;
         Function<Integer, Integer> minusOne = x->x-1;
         Function<Integer, Integer> timesTwoMinusOne = minusOne.compose(timesTwo); //does it in reverse order

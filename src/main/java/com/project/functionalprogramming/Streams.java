@@ -6,15 +6,18 @@ import java.util.function.*;
 
 public class Streams {
     public static void main(String[] args) {
-        //Map
-        Integer[] intArray = {1,2,3,4,5,6,7,8,9,10};
-        List<Integer> integerList = new ArrayList<>(Arrays.asList(intArray));
+        // Map
+        int[] intArray = {1,2,3,4,5,6,7,8,9,10};
+        // Get min/max using streams
+        System.out.println(Arrays.stream(intArray).min().getAsInt());
+        // Convert int[] array to List<Integer>
+        List<Integer> integerList = Arrays.stream(intArray).boxed().toList();
         List<Integer> timesTwoResult = integerList.stream().map(i->i*2).collect(Collectors.toList()); //creating a function on the fly
         System.out.println(timesTwoResult);
         Function<Integer, Integer> timesThree = x->x*3;
         List<Integer> timesThreeResult = integerList.stream().map(timesThree).collect(Collectors.toList()); //referring a function
         System.out.println(timesThreeResult);
-        //Filter
+        // Filter
         List<Integer> odds = timesThreeResult.stream().filter(x->x%2!=0).collect(Collectors.toList());
         System.out.println(odds);
         Predicate<Integer> isEven = x->x%2==0;
@@ -25,7 +28,7 @@ public class Streams {
         Predicate<String> isLongerThan3 = isLongerThanLength.apply(3);
         List<String> longerWords = Arrays.stream(words).filter(isLongerThan3).collect(Collectors.toList());
         System.out.println(longerWords);
-        //Reduce
+        // Reduce
         BinaryOperator<Integer> reducer = (a,c)->a+c;
         int sum = integerList.stream().reduce(0,reducer);
         System.out.println("Sum from reducer "+sum);
